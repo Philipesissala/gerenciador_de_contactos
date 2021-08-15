@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+h5 {
+    text-align: center;
+}
+
+.add-modalOverlay,
+.update-modalOverlay,
+.sucessModalOverlay {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.myModal,.sucessMessageModal {
+    position: relative;
+    background-color: white;
+    width: 70%;
+    height: 90%;
+    margin: 5vh auto;
+
+}
+
+.sucessMessageModal{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    width: 600px;
+    height: 350px;
+    margin: 15vh auto;
+}
+
+.form-group {
+    margin: 0 auto;
+    width: 90%;
+}
+
+.active {
+    visibility: hidden;
+    opacity: 0;
+}
+
+textarea {
+    resize: none;
+}

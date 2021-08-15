@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Contactos</title>
+  </head>
+  <body>
+    <table class="tbContactos table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">NOME</th>
+          <th scope="col">NÚMERO</th>
+          <th scope="col">DESCRIÇÃO</th>
+          <th scope="col">
+            <button type="button" class="novoContacto btn btn-primary">Novo Contacto</button>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for contacto in dados %}
+          <tr>
+            <th scope="row" id="id">{{ contacto.id }}</th>
+            <td>{{ contacto.nome }}</td>
+            <td>{{ contacto.numero }}</td>
+            <td>{{ contacto.email }}</td>
+            <td>{{ contacto.descricao }}</td>
+            <td>
+              <a href="/findone/{{contacto.id}}"><button type="button" class="btnAtualizar btn btn-success">Atualizar</button></a>
+              <a href="/destroy/{{contacto.id}}"><button type="button" class="btnEliminar btn btn-danger">Eliminar</button></a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <div
+      class="active add-modalOverlay">
+      <!-- ########################### ADD MODAL ############################ -->
+      <div class="myModal">
+        <div class="modal-header">
+          <button type="button" class="close">
+            <span aria-hidden="true" class="close-modalAdd">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h5>NOVO CONTACTO</h5>
+          <form action="/cad" method="POST">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Nome</label>
+              <input type="text" class="form-control" name="nome">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Numero</label>
+              <input type="text" class="form-control" name="numero">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Email</label>
+              <input type="email" class="form-control" name="email">
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">Example textarea</label>
+              <textarea class="form-control" rows="3" name="descricao"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div
+      class="active update-modalOverlay">
+      <!-- ########################### UPDATE MODAL ############################ -->
+      <div class="myModal">
+        <div class="modal-header">
+          <button type="button" class="close">
+            <span aria-hidden="true" class="close-modalUpdate">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h5>ATUALIZAR CONTACTO</h5>
+          <form action="/update" method="POST">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Nome</label>
+              <input type="text" class="form-control" name="nome" value="{{ dados.nome }}">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Numero</label>
+              <input type="text" class="form-control" name="numero" value="{{ contacto.numero }}">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Email</label>
+              <input type="email" class="form-control" name="email" value="{{ contacto.email }}">
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">Descricao</label>
+              <input type="email" class="form-control" name="email" value="{{ contacto.descricao }}">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="js/script.js"></script>
+  </body>
+</html>
